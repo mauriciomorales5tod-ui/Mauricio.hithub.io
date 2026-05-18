@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavandería Esponjafeliz - ¡Frescura bajo el mar!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --amarillo-bob: #f7d02c;
+            --azul-mar: #0084ff;
+            --azul-claro: #f0f8ff;
+            --blanco: #ffffff;
+            --negro-texto: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--azul-claro);
+            color: var(--negro-texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- ANIMACIÓN DE BURBUJAS --- */
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            opacity: 0;
+            animation: rise 15s infinite ease-in;
+        }
+
+        .bubble:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 10s; }
+        .bubble:nth-child(2) { width: 20px; height: 20px; left: 20%; animation-duration: 13s; animation-delay: 1s; }
+        .bubble:nth-child(3) { width: 50px; height: 50px; left: 35%; animation-duration: 18s; animation-delay: 2s; }
+        .bubble:nth-child(4) { width: 30px; height: 30px; left: 50%; animation-duration: 12s; animation-delay: 0.5s; }
+        .bubble:nth-child(5) { width: 60px; height: 60px; left: 65%; animation-duration: 20s; animation-delay: 3s; }
+        .bubble:nth-child(6) { width: 25px; height: 25px; left: 80%; animation-duration: 14s; animation-delay: 1.5s; }
+        .bubble:nth-child(7) { width: 45px; height: 45px; left: 90%; animation-duration: 16s; animation-delay: 2.5s; }
+
+        @keyframes rise {
+            0% { bottom: -100px; transform: translateX(0); opacity: 0; }
+            5% { opacity: 1; }
+            50% { transform: translateX(50px); }
+            100% { bottom: 1080px; transform: translateX(-50px); opacity: 0; }
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: var(--blanco);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--azul-mar);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li { margin-left: 25px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--negro-texto);
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--azul-mar); }
+
+        /* --- SECCIÓN BUSCADOR --- */
+        .search-container {
+            text-align: center;
+            padding: 60px 10%;
+            background: var(--blanco);
+            margin-bottom: 40px;
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .search-container h2 {
+            color: var(--azul-mar);
+            font-weight: 900;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 20px 60px 20px 30px;
+            border-radius: 40px;
+            border: 3px solid var(--azul-claro);
+            font-size: 1.2rem;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .search-box input:focus {
+            border-color: var(--amarillo-bob);
+            box-shadow: 0 5px 20px rgba(247, 208, 44, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+
+        .item-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 900px;
+            margin: 20px auto 0;
+        }
+
+        .item-tag {
+            background: var(--azul-claro);
+            color: var(--azul-mar);
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .item-tag:hover {
+            background: var(--amarillo-bob);
+            color: var(--negro-texto);
+            transform: translateY(-5px);
+        }
+
+        .hidden { display: none; }
+
+        /* --- CARACTERÍSTICAS --- */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 40px 10%;
+        }
+
+        .feature-card {
+            background: var(--blanco);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,132,255,0.15);
+            text-align: center;
+            border: 5px solid transparent;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.03);
+            border-color: var(--amarillo-bob);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 20px;
+            color: var(--azul-mar);
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        /* --- ORDENAR --- */
+        .order-section {
+            text-align: center;
+            padding: 100px 10%;
+            background-color: #e6f3ff;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .order-section h2 {
+            font-weight: 900;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--azul-mar);
+        }
+
+        .cta-button {
+            background-color: var(--amarillo-bob);
+            color: var(--negro-texto);
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            box-shadow: 0 5px 0px #c6a623;
+            transition: all 0.2s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0px #c6a623;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: var(--blanco);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 100;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
+
+        @media (max-width: 768px) {
+            .search-container h2 { font-size: 1.8rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bubbles">
+        <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+        <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <nav>
+        
+        <ul class="nav-links">
+            <li><a href="file:///C:/Users/Lenovo/Documents/HTML/prueba%20widget%20.html">Inicio</a></li>
+            <li><a href="file:///C:/Users/Lenovo/Documents/HTML/proyectos%20servicios.html">Servicios</a></li>
+            <li><a href="file:///C:/Users/Lenovo/Documents/HTML/articulos.html">Ordenar</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section class="search-container">
+        <h2>¿Qué quieres lavar hoy?</h2>
+        <p>Busca tu prenda y descubre si podemos dejarla como nueva.</p>
+        <p><strong>¡NO DEJES PARA MAÑANA LO QUE PUEDES LAVAR HOY!</strong></p>
+
+        <div class="search-box">
+            <input type="text" id="itemSearch" placeholder="Ej: Cobijas, Peluches, Camisas..." onkeyup="filterItems()">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div id="itemList" class="item-grid">
+            <div class="item-tag" data-name="cobijas">Cobijas</div>
+            <div class="item-tag" data-name="peluches">Peluches</div>
+            <div class="item-tag" data-name="edredones">Edredones</div>
+            <div class="item-tag" data-name="uniformes">Uniformes</div>
+            <div class="item-tag" data-name="ternos">Ternos</div>
+            <div class="item-tag" data-name="cortinas">Cortinas</div>
+            <div class="item-tag" data-name="camisas">Camisas</div>
+            <div class="item-tag" data-name="pantalones">Pantalones</div>
+            <div class="item-tag" data-name="vestidos">Vestidos</div>
+            <div class="item-tag" data-name="manteles">Manteles</div>
+        </div>
+        <p id="noResult" style="display: none; margin-top: 20px; color: #666;">¡Vaya! No encontramos eso, pero escríbenos y seguro te ayudamos. 🧽</p>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>Nuestra Misión</h3>
+            <p style="text-align:justify;">Brindar un servicio de lavandería innovador y de alta calidad, ofreciendo una experiencia confiable y eficiente bajo el mar.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Nuestra Visión</h3>
+            <p style="text-align:justify;">Convertirnos en la lavandería líder, reconocida por transformar el cuidado de la ropa en una experiencia que eleva la confianza.</p>
+        </div>
+    </section>
+
+</body>
+</html>

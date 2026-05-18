@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavandería La Esponja Feliz</title>
+    <style>
+        :root {
+            /* Paleta de Blancos y Celestes */
+            --celeste-principal: #00AEEF; /* Un celeste vibrante y limpio */
+            --celeste-claro: #E1F5FE;    /* Celeste pastel para fondos */
+            --celeste-oscuro: #007BB5;   /* Para textos o botones */
+            --blanco-puro: #ffffff;
+            --gris-suave: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente más limpia */
+            margin: 0;
+            background-color: var(--gris-suave);
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: var(--blanco-puro);
+            padding: 40px;
+            text-align: center;
+            border-bottom: 4px solid var(--celeste-principal);
+        }
+
+        header h1 {
+            color: var(--celeste-principal);
+            margin: 0;
+        }
+
+        /* Navegación */
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--celeste-principal);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: var(--celeste-oscuro);
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 1100px;
+            margin: 30px auto;
+            background: var(--blanco-puro);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 { 
+            color: var(--celeste-oscuro); 
+            border-bottom: 3px solid var(--celeste-claro);
+            display: block;
+            padding-bottom: 10px;
+        }
+
+        /* Tablas de Precios */
+        .tabla-precios {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .tabla-precios th {
+            background-color: var(--celeste-claro);
+            color: var(--celeste-oscuro);
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .tabla-precios td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        /* Sección de Artículos */
+        .grid-articulos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid var(--celeste-claro);
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .card:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--celeste-principal);
+        }
+
+        .btn-comprar {
+            background-color: var(--celeste-principal);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-comprar:hover {
+            background-color: var(--celeste-oscuro);
+        }
+
+        /* Ubicación */
+        .mapa-container {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--celeste-claro);
+            margin: 20px 0;
+        }
+
+        /* Redes Sociales */
+        .social-bar {
+            text-align: center;
+            padding: 40px;
+            background: var(--celeste-claro);
+        }
+
+        .social-icon {
+            width: 50px;
+            margin: 0 15px;
+            filter: grayscale(100%) brightness(0.5); /* Para que no desentonen con el celeste */
+            transition: 0.3s;
+        }
+
+        .social-icon:hover { 
+            filter: none;
+            transform: scale(1.1); 
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--celeste-oscuro);
+            color: white;
+            font-size: 0.9em;
+        }
+
+        form input, form select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        form input:focus, form select:focus {
+            outline: none;
+            border-color: var(--celeste-principal);
+            box-shadow: 0 0 5px var(--celeste-claro);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🧽 Lavandería La Esponja Feliz 🫧</h1>
+    <p>Pureza y frescura en cada prenda</p>
+</header>
+
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#precios">Precios</a>
+    <a href="#articulos">Artículos</a>
+    <a href="#reservaciones">Reservas</a>
+    <a href="#ubicacion">Ubicación</a>
+</nav>
+
+<div class="container">
+    
+    <section id="inicio">
+        <h2>Misión y Visión</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: var(--celeste-claro); padding: 20px; border-radius: 10px; border-left: 5px solid var(--celeste-principal);">
+                <h3>Misión</h3>
+                <p>Brindar un servicio de limpieza excepcional utilizando tecnología de punta y procesos eco-amigables.</p>
+            </div>
+            <div style="background: var(--celeste-claro); padding: 20px; border-radius: 10px; border-left: 5px solid var(--celeste-principal);">
+                <h3>Visión</h3>
+                <p>Ser la lavandería líder reconocida por nuestra puntualidad, cuidado de las prendas y frescura inigualable.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="precios">
+        <h2>Nuestros Precios</h2>
+        <table class="tabla-precios">
+            <thead>
+                <tr>
+                    <th>Servicio</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🧺 Lavado Profesional</td>
+                    <td>Limpieza profunda con detergentes premium</td>
+                    <td><strong>Q17.00</strong></td>
+                </tr>
+                <tr>
+                    <td>🌬️ Secado Express</td>
+                    <td>Secado controlado para evitar daños térmicos</td>
+                    <td><strong>Q25.00</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="articulos">
+        <h2>Tienda de Productos</h2>
+        <div class="grid-articulos">
+            <div class="card">
+                <h3>Jabón Concentrado</h3>
+                <p>Alto rendimiento y limpieza profunda en cada carga.</p>
+                <p><strong style="color: var(--celeste-oscuro);">Precio: Q30.00</strong></p>
+                <button class="btn-comprar">Comprar ahora</button>
+            </div>
+            <div class="card">
+                <h3>Suavizante Blue Cloud</h3>
+                <p>Fragancia duradera y suavidad máxima en tejidos.</p>
+                <p><strong style="color: var(--celeste-oscuro);">Precio: Q25.00</strong></p>
+                <button class="btn-comprar">Comprar ahora</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="reservaciones">
+        <h2>Hacer una Reservación</h2>
+        <form action="#">
+            <input type="text" placeholder="Tu Nombre Completo" required>
+            <input type="date" required>
+            <select>
+                <option value="lavado">Servicio de Lavado (Q17)</option>
+                <option value="secado">Servicio de Secado (Q25)</option>
+                <option value="ambos">Lavado y Secado Completo</option>
+            </select>
+            <button type="submit" class="btn-comprar" style="width:100%; height: 50px; text-transform: uppercase;">Confirmar Reservación</button>
+        </form>
+    </section>
+
+    <section id="ubicacion">
+        <h2>¿Dónde estamos?</h2>
+        <p>Encuéntranos en nuestra sucursal principal de la zona central.</p>
+        <div class="mapa-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15444.6083167123!2d-90.5892806!3d14.588836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a11413a967fb%3A0x6b539c09c2a688a4!2sVilla%20Nueva%2C%20Guatemala!5e0!3m2!1ses!2sgt!4v1700000000000" 
+                width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <section>
+        <h2>Galería de Instalaciones</h2>
+        <div style="text-align: center;">
+            <video width="100%" controls style="border-radius: 10px; border: 1px solid var(--celeste-claro);">
+                <source src="tu_video.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
+            </video>
+        </div>
+    </section>
+
+</div>
+
+<div class="social-bar">
+    <h3 style="color: var(--celeste-oscuro);">Síguenos en nuestras redes</h3>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" class="social-icon" alt="WhatsApp"></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="social-icon" alt="Instagram"></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" class="social-icon" alt="Facebook"></a>
+</div>
+
+<footer>
+    <p>© 2026 Lavandería La Esponja Feliz - Calidad y Blancura Garantizada</p>
+</footer>
+
+</body>
+</html>

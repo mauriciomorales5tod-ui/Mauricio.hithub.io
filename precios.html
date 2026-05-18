@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavandería La Esponja Feliz</title>
+    <style>
+        :root {
+            /* Paleta de Blancos y Celestes */
+            --celeste-principal: #00AEEF; /* Un celeste vibrante y limpio */
+            --celeste-claro: #E1F5FE;    /* Celeste pastel para fondos */
+            --celeste-oscuro: #007BB5;   /* Para textos o botones */
+            --blanco-puro: #ffffff;
+            --gris-suave: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente más limpia */
+            margin: 0;
+            background-color: var(--gris-suave);
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: var(--blanco-puro);
+            padding: 40px;
+            text-align: center;
+            border-bottom: 4px solid var(--celeste-principal);
+        }
+
+        header h1 {
+            color: var(--celeste-principal);
+            margin: 0;
+        }
+
+        /* Navegación */
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--celeste-principal);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: var(--celeste-oscuro);
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 1100px;
+            margin: 30px auto;
+            background: var(--blanco-puro);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 { 
+            color: var(--celeste-oscuro); 
+            border-bottom: 3px solid var(--celeste-claro);
+            display: block;
+            padding-bottom: 10px;
+        }
+
+        /* Tablas de Precios */
+        .tabla-precios {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .tabla-precios th {
+            background-color: var(--celeste-claro);
+            color: var(--celeste-oscuro);
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .tabla-precios td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        /* Sección de Artículos */
+        .grid-articulos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid var(--celeste-claro);
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .card:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--celeste-principal);
+        }
+
+        .btn-comprar {
+            background-color: var(--celeste-principal);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-comprar:hover {
+            background-color: var(--celeste-oscuro);
+        }
+
+        /* Ubicación */
+        .mapa-container {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--celeste-claro);
+            margin: 20px 0;
+        }
+
+        /* Redes Sociales */
+        .social-bar {
+            text-align: center;
+            padding: 40px;
+            background: var(--celeste-claro);
+        }
+
+        .social-icon {
+            width: 50px;
+            margin: 0 15px;
+            filter: grayscale(100%) brightness(0.5); /* Para que no desentonen con el celeste */
+            transition: 0.3s;
+        }
+
+        .social-icon:hover { 
+            filter: none;
+            transform: scale(1.1); 
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--celeste-oscuro);
+            color: white;
+            font-size: 0.9em;
+        }
+
+        form input, form select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        form input:focus, form select:focus {
+            outline: none;
+            border-color: var(--celeste-principal);
+            box-shadow: 0 0 5px var(--celeste-claro);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🧽 Lavandería La Esponja Feliz 🫧</h1>
+    <p>Pureza y frescura en cada prenda</p>
+</header>
+
+<nav>
+    <a href="file:///C:/Users/Lenovo/Documents/HTML/prueba%20widget%20.html">Inicio</a>
+    <a href="file:///C:/Users/Lenovo/Documents/HTML/precios.html">Precios</a>
+    <a href="file:///C:/Users/Lenovo/Documents/HTML/articulos.html">Artículos</a>
+    <a href="#reservaciones">Reservas</a>
+    <a href="#ubicacion">Ubicación</a>
+</nav>
+
+<div class="container">
+    <section id="precios">
+        <h2>Nuestros Precios</h2>
+        <table class="tabla-precios">
+            <thead>
+                <tr>
+                    <th>Servicio</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🧺 Lavado Profesional</td>
+                    <td>Limpieza profunda con detergentes premium</td>
+                    <td><strong>Q17.00</strong></td>
+                </tr>
+                <tr>
+                    <td>🌬️ Secado Express</td>
+                    <td>Secado controlado para evitar daños térmicos</td>
+                    <td><strong>Q25.00</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
